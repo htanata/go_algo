@@ -7,11 +7,11 @@ func Partition(s []int, k int) [][]int {
 	d := create2DSlice(n+1, k+1)
 	m := create2DSlice(n+1, k+1)
 
-	p := make([]int, n+1)
-	p[0] = 0
+	sum := make([]int, n+1)
+	sum[0] = 0
 
 	for i := 1; i <= n; i++ {
-		p[i] = p[i-1] + s[i-1]
+		sum[i] = sum[i-1] + s[i-1]
 	}
 
 	for i := 1; i <= k; i++ {
@@ -19,7 +19,7 @@ func Partition(s []int, k int) [][]int {
 	}
 
 	for i := 2; i <= n; i++ {
-		m[i][1] = p[i]
+		m[i][1] = sum[i]
 	}
 
 	for i := 2; i <= n; i++ {
@@ -27,7 +27,7 @@ func Partition(s []int, k int) [][]int {
 			m[i][j] = maxInt
 
 			for x := k - 1; x <= i-1; x++ {
-				cost := max(m[x][j-1], p[i]-p[x])
+				cost := max(m[x][j-1], sum[i]-sum[x])
 
 				if cost < m[i][j] {
 					m[i][j] = cost
