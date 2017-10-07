@@ -5,19 +5,17 @@ const maxInt = int(^uint(0) >> 1)
 func Partition(s []int, k int) [][]int {
 	n := len(s)
 	d := create2DSlice(n+1, k+1)
-	m := create2DSlice(n+1, k+1)
 
 	sum := make([]int, n+1)
 	sum[0] = 0
-
 	for i := 1; i <= n; i++ {
 		sum[i] = sum[i-1] + s[i-1]
 	}
 
+	m := create2DSlice(n+1, k+1)
 	for i := 1; i <= k; i++ {
 		m[1][i] = s[0]
 	}
-
 	for i := 2; i <= n; i++ {
 		m[i][1] = sum[i]
 	}
