@@ -34,4 +34,15 @@ var _ = Describe("Partition", func() {
 			},
 		))
 	})
+
+	It("partitions a list by 4", func() {
+		Expect(Partition([]int{9, 8, 7, 6, 5, 4, 3, 2, 1}, 4)).To(Equal(
+			[][]int{
+				[]int{9},
+				[]int{8},
+				[]int{7, 6},
+				[]int{5, 4, 3, 2, 1},
+			},
+		))
+	})
 })

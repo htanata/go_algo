@@ -24,7 +24,7 @@ func Partition(s []int, k int) [][]int {
 		for j := 2; j <= k; j++ {
 			m[i][j] = maxInt
 
-			for x := k - 1; x <= i-1; x++ {
+			for x := 1; x <= i-1; x++ {
 				cost := max(m[x][j-1], sum[i]-sum[x])
 
 				if cost < m[i][j] {
